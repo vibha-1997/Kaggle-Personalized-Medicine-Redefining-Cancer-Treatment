@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn.naive_bayes import MultinomialNB
+from sklearn import svm,neighbors,linear_model
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cross_validation import train_test_split
 import numpy as np
@@ -37,7 +38,7 @@ X_train,X_test,y_train,y_test=train_test_split(train,target,test_size=0.2,random
 x_traincv=cv.fit_transform(X_train)
 y_train=y_train.astype('int')
 x_testcv=cv.transform(X_test)
-clf=MultinomialNB()
+clf=neighbors.KNeighborsClassifier()
 clf.fit(x_traincv,y_train)
 
 pred=clf.predict(x_testcv)
